@@ -11,7 +11,7 @@ implementation
       lemes, mes : String;
     begin
 
-        lemes := copy(dateToStr(date),7,4);        //   05/06/2023
+        lemes := copy(dateToStr(date),7,4);       
         if lemes = '06' then
             mes := 'Junho'
 
@@ -19,10 +19,10 @@ implementation
             mes := 'Fevereiro'
 
         else if lemes = '03' then
-            mes := 'Março'
+            mes := 'MarÃ§o'
 
         else
-            mes := 'Não Sei!';
+            mes := 'NÃ£o Sei!';
 
             mes_extenso := mes;
             ShowMessage(lemes);
