@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/05/05 15:50:30.000.738,=C:\Users\14429683\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/05/05 16:12:45.000.895,=C:\Users\14429683\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/05/05 16:17:29.000.519,C:\Users\14429683\OneDrive\DELPHI\JogosCef\jogosCef_1\uPrincipal.dfm=C:\Users\14429683\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/05/05 16:17:29.000.519,C:\Users\14429683\OneDrive\DELPHI\JogosCef\jogosCef_1\uPrincipal.pas=C:\Users\14429683\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/05/05 16:18:04.000.535,C:\Users\14429683\OneDrive\DELPHI\JogosCef\jogosCef_1\uJogos.pas=C:\Users\14429683\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/05/05 16:18:45.000.661,C:\Users\14429683\OneDrive\DELPHI\JogosCef\jogosCef_1\ProjJogosCef1.dproj=C:\Users\14429683\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/05/24 19:48:40.000.301,=C:\Users\gorse\OneDrive\DELPHI_Programas\JogosCef\jogosCef_1\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 12:05:05.000.304,C:\Users\gorse\OneDrive\DELPHI_Programas\JogosCef\jogosCef_1\ProjJogosCef1.dproj=C:\Users\gorse\OneDrive\DELPHI_Programas\JogosCef\jogosCef_1\Loterias_CEF.dproj</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="uPrincipal.pas"/>
+    <File Path="uPrincipal.dfm"/>
+    <File Path="uJogos.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>
