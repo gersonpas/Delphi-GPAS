@@ -12,7 +12,6 @@ interface
           private
              tipoLoteria : String;
              qtdeDezena :  Integer;
-             qtdeCartela : Integer;
              Dezenas :     array of Integer;
 
           protected
@@ -68,6 +67,7 @@ procedure JogosCef.setTipoLoteria(pTipoLoto: String);
 begin
 
               tipoLoteria  :=  pTipoLoto;
+
     end;
 
 end.
