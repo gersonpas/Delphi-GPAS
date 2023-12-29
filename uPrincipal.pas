@@ -1,10 +1,10 @@
-﻿unit uPrincipal;
+unit uPrincipal;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uJogos;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uJogos, Vcl.Menus;
 
 type
   TForm1 = class(TForm)
@@ -17,10 +17,25 @@ type
     ListBoxResult: TListBox;
     btnGerar: TButton;
     Label2: TLabel;
+    MainMenu1: TMainMenu;
+    Arquivo1: TMenuItem;
+    Arquivo2: TMenuItem;
+    CEF1: TMenuItem;
+    CEF2: TMenuItem;
+    Sobre1: TMenuItem;
+    Sobre2: TMenuItem;
+    Verso1: TMenuItem;
+    S1: TMenuItem;
     procedure btnGeraJogosClick(Sender: TObject);
     procedure ComboJogosChange(Sender: TObject);
     procedure btnGerarClick(Sender: TObject);
     procedure ComQtdeDezenaChange(Sender: TObject);
+    procedure CEF2Click(Sender: TObject);
+    procedure Sobre2Click(Sender: TObject);
+    procedure Verso1Click(Sender: TObject);
+    procedure S1Click(Sender: TObject);
+    procedure CEF1Click(Sender: TObject);
+    procedure Arquivo2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -49,12 +64,24 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm1.Arquivo2Click(Sender: TObject);
+begin
+      messagedlg('Em 1784 surge no Brasil a primeira loteria como ' +
+       'meio para captar recursos usando o conceito de “contribuição '+
+       ' voluntária”  os quais foram utilizados na construção da casa de Câmara'
+       + ' e Cadeia de Vila Rica, em Minas Gerais.. '
+        + 'A primeira regulamentação das loterias foi feita pelo imperador' +
+        ' D. Pedro II, que implementou as primeiras normas para os jogos, por meio do decreto '
+         + ' nº 357, de 27 de abril de 1844. Desde então muitas coisas mudaram.'
+          + ' Fonte:Internet Google.' ,mtcustom,[mbok],0);
+end;
+
 procedure TForm1.btnGeraJogosClick(Sender: TObject);
 begin
      criaJogo := JogosCef.CriaObjeto;
      dezFinal := 60;   // inicializa o 1 item do  case self.ComboJogos.ItemIndex of
      contCartela := 0; // inicializa o contador de cartelas
-     btnGerar.Visible := true;
+     btnGerar.Visible := true; // Faz o botão Gerar Cartelas tornar-se visível
 
      criaJogo.setTipoLoteria(self.ComboJogos.Text);
      criaJogo.setQtdeDezena (StrToInt(self.ComQtdeDezena.Text));
@@ -69,14 +96,13 @@ end;
 
 procedure TForm1.btnGerarClick(Sender: TObject);
 begin
-    // Aqui Vamos Gerar as Cartelas com as Dezenas geradas Randomicamente
+        // Preparação para gerar as Dezenas Randomicamente
            contCartela :=  contCartela + 1;
            self.MemResult.Clear;
            self.MemResult.Text := (criaJogo.getTipoLoteria);
            self.MemResult.Lines.Add('  Gerado um Total de ' + (contCartela).ToString + ' Cartelas');
 
           qtDezenas := (criaJogo.getQtdeDezena);
-
 
            case self.ComboJogos.ItemIndex of
                 0: dezFinal := 60;
@@ -90,14 +116,15 @@ begin
  self.ListBoxResult.Items.Add(  '== Cartela  '  + (contCartela).ToString + ' com ' +
   (criaJogo.getQtdeDezena).ToString  + ' Dezenas ====');
 
- begin
+      // Escolhe dezenas aleatórias sem repetição
+     begin
        randomize;
-          // escolhe 6 números aleatórios sem repetição
+
        for k := 1 to qtDezenas do begin
         repetido := true;
         while repetido  do
        begin
-         numeros[k] := random(dezFinal); // gera um número aleatório entre 0 e 60
+         numeros[k] := random(dezFinal);
          repetido := false;
          for j := 1 to k-1 do
 
@@ -110,7 +137,7 @@ begin
 
  end;
 
-  // ordena os números em ordem crescente usando o algoritmo de bubble sort
+          // Ordena dezenas em ordem crescente usando o algoritmo bubble sort
   for k := 1 to qtDezenas-1 do
     for j := k+1 to qtDezenas do
       if numeros[k] > numeros[j] then begin
@@ -119,13 +146,11 @@ begin
         numeros[j] := temp;
       end;
 
-                  // apresenta os números em ordem crescente
+          // apresenta as dezenas em ordem crescente
      for k := 1 to qtDezenas do
+          self.ListBoxResult.Items.Add(Format('%2da. Dez = ', [k]) + numeros[k].ToString);
 
-              self.ListBoxResult.Items.Add(Format('%2da. Dez = ', [k]) + numeros[k].ToString);
-             //   for pos := 99900 downto 0 do
-
-
+          // Caso a opção seja Dia de Sorte: Rotina gera o mês;
             case self.ComboJogos.ItemIndex of
             3:
             begin
@@ -137,6 +162,17 @@ begin
 
         end;
  end;
+
+procedure TForm1.CEF1Click(Sender: TObject);
+begin
+   // messagedlg('Aqui estão os principais jogos da CEF.',mtcustom,[mbok],0);
+    ShowMessage('Aqui estão os principais jogos da CEF.');
+end;
+
+procedure TForm1.CEF2Click(Sender: TObject);
+begin
+close;
+end;
 
 procedure TForm1.ComboJogosChange(Sender: TObject);
 begin
@@ -253,6 +289,21 @@ procedure TForm1.ComQtdeDezenaChange(Sender: TObject);
 begin
        criaJogo := JogosCef.CriaObjeto;
       criaJogo.setQtdeDezena (StrToInt(self.ComQtdeDezena.Text));
+end;
+
+procedure TForm1.S1Click(Sender: TObject);
+begin
+      messagedlg('Programa elaborado em Object Pascal - com a ferramenta: Delphi 11 da Embarcadero.',mtcustom,[mbok],0);
+end;
+
+procedure TForm1.Sobre2Click(Sender: TObject);
+begin
+  messagedlg('Gerson Pereira de A Sobrinho - Programador Delphi, Python e Java.',mtcustom,[mbok],0);
+end;
+
+procedure TForm1.Verso1Click(Sender: TObject);
+begin
+      messagedlg('Versão 1.5 - Junho 2023',mtcustom,[mbok],0);
 end;
 
 end.
